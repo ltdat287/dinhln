@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: VirtualProject
+        psr4_prefix: VirtualProject
+        src_path: app
