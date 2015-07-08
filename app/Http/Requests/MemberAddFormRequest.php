@@ -28,7 +28,7 @@ class MemberAddFormRequest extends Request {
             'email' => 'required|vpemail|confirmed|max:255|unique:users',
 		    'email_confirmation' => 'required',
 		    // 'telephone_no' => 'required|vptelephone|min:10|max:13',
-		    // 'birthday' => 'required|date_format:' . VP_TIME_FORMAT . '|vpdate|min:10|max:10',
+		    'birthday' => 'required|date_format:' . VP_TIME_FORMAT . '|vpdate|min:10|max:10',
 		    'note' => 'min:1|max:300',
 		    'password' => 'required|between:8,32',
 		    'use_role' => 'required'
