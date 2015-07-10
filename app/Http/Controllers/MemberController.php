@@ -80,8 +80,8 @@ class MemberController extends Controller
         
         // Get user session
         $user = Session::get('user');
-            
-            // Build data for views
+        
+        // Build data for views
         $data = array(
             'roles' => $roles,
             'bosses' => $bosses,
