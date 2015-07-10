@@ -51,6 +51,7 @@ class MemberController extends Controller
             $users->where('boss_id', '=', Auth::user()->id);
         }
         
+        //????
         $users = $users->paginate(VP_LIMIT_PAGINATE);
         
         // Set data for view
