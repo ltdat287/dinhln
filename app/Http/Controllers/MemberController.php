@@ -346,7 +346,7 @@ class MemberController extends Controller
 	    
 	    // Get user.
 	    $user = User::find($id);
-
+	    
 	    // Get role.
 	    $role = Role::where('slug', '=', $user->getFirstRole()->slug)->first();
 	     

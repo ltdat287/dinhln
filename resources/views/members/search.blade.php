@@ -45,6 +45,20 @@
 					</td>
 				</tr>
 				@endif
+				@if (MemberHelper::getCurrentUserRole() == 'admin' OR MemberHelper::getCurrentUserRole() == 'boss')
+				<tr>
+					<td>{{ trans('labels.role') }}</td>
+					<td colspan="3" align="center">
+						<ul class="pure-menu-list pure-menu-horizontal">
+                            @foreach ($roles as $role)
+                            <li class="pure-menu-item pure-u-1-6">
+                                <label for="{{ $role->slug }}"><input {{ (Input::has($role->slug) && Input::has($role->slug) == '1') ? 'checked=checked' : '' }} type="checkbox" id="{{ $role->id }}" name="{{ $role->slug }}" value="1">{{ $role->name }}</label>
+                            </li>
+                            @endforeach
+						</ul>
+					</td>
+				</tr>
+				@endif
 				<tr>
 					<td colspan="4" align="right">
 						<button class="pure-button pure-button-primary" type="submit">{{ trans('labels.search') }}</button>
