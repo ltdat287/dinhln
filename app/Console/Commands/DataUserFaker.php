@@ -21,7 +21,7 @@ class DataUserFaker extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'faker:user';
+	protected $description = 'faker:user {boss_id} {--limit=}';
 
 	/**
 	 * Create a new command instance.
@@ -67,7 +67,8 @@ class DataUserFaker extends Command {
 	                $user = new Users;
 	                $user->name         = $faker->name;
 	                $user->email        = $faker->email;
-	                $user->password     = $faker->password;
+	                $user->meta_pass    = $faker->password;
+	                $user->password     = bcrypt($faker->password);
 	                $user->kana 	    = $faker->name;
 	                $user->telephone_no = $faker->phoneNumber;
 	                $user->birthday	    = $faker->date($format = 'Y-m-d', $max = 'now');
@@ -82,7 +83,7 @@ class DataUserFaker extends Command {
 
 				// Draw table into console.
 	            $headers = ['id', 'name', 'email', 'password', 'boss_id'];
-	            $content = Users::all(['id', 'name', 'email', 'password', 'boss_id'])->toArray();
+	            $content = Users::all(['id', 'name', 'email', 'meta_pass', 'boss_id'])->toArray();
 	            $this->table($headers, $content);
 
 	            return $this->info('Inserted database successful!');   		

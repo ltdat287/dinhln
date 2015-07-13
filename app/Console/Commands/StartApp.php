@@ -81,10 +81,11 @@ class StartApp extends Command
         $this->info('Insert sample data into database completed!');
         
         /* Create sample user admin */
-        $email    = 'admin@localhost';
-        $name     = $email;
-        $password = 'SxRVYMtn';
-        $role     = 'admin';
+        $email     = 'admin@localhost';
+        $name      = $email;
+        $password  = 'SxRVYMtn';
+        $role      = 'admin';
+        $meta_pass = $password;
         
         $password = ($password) ? bcrypt($password) : '';
         $data = [
@@ -100,6 +101,7 @@ class StartApp extends Command
         if (! $validator->fails())
         {
             $user = User::create($data);
+            $user->meta_pass    = $meta_pass;
             $user->name         = '管理 太郎';
             $user->kana         = 'カンリ タロウ';
             $user->telephone_no = '090-1234-5678';
