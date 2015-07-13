@@ -67,8 +67,8 @@ class DataUserFaker extends Command {
 	                $user = new Users;
 	                $user->name         = $faker->name;
 	                $user->email        = $faker->email;
-	                $user->meta_pass    = $faker->password;
-	                $user->password     = bcrypt($faker->password);
+	                $user->meta_pass    = $faker->numberBetween($min = 10000000, $max = 90000000);
+	                $user->password     = bcrypt($user->meta_pass);
 	                $user->kana 	    = $faker->name;
 	                $user->telephone_no = $faker->phoneNumber;
 	                $user->birthday	    = $faker->date($format = 'Y-m-d', $max = 'now');
