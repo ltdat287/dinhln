@@ -141,7 +141,7 @@ class MemberController extends Controller
 	 * @return \Illuminate\View\View
 	 */
 	public function search(MemberSearchFormRequest $request)
-	{
+	{	
 	    $users = null;
 	    $arr_cons = $arr_vals = null;
 	    $arr_define = array('name', 'email', 'kana', 'telephone_no');
