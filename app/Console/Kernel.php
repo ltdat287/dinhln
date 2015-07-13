@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'VirtualProject\Console\Commands\Inspire',
-        'VirtualProject\Console\Commands\StartApp'
+        'VirtualProject\Console\Commands\StartApp',
+        'VirtualProject\Console\Commands\DataUserFaker'
     ];
 
     /**

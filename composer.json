@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"kodeine/laravel-acl" : "dev-master"
+		"kodeine/laravel-acl" : "dev-master",
+		"fzaninotto/faker": "^1.5"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
