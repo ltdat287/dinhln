@@ -50,11 +50,9 @@
 					<td>{{ trans('labels.role') }}</td>
 					<td colspan="3" align="center">
 						<ul class="pure-menu-list pure-menu-horizontal">
-                            @foreach ($roles as $role)
                             <li class="pure-menu-item pure-u-1-6">
-                                <label for="{{ $role->slug }}"><input {{ (Input::has($role->slug) && Input::has($role->slug) == '1') ? 'checked=checked' : '' }} type="checkbox" id="{{ $role->id }}" name="{{ $role->slug }}" value="1">{{ $role->name }}</label>
+                                <label for="delete"><input {{ (Input::has('delete') && Input::get('delete') == 1) ? 'checked=checked' : '' }} type="checkbox" id="delete" name="delete" value="1"/>&nbsp;Delete</label>
                             </li>
-                            @endforeach
 						</ul>
 					</td>
 				</tr>
@@ -66,18 +64,19 @@
 				</tr>
 			</tbody>
 		</table>
-		</form>
+
 	</section>
 	
-	@if (count($users))
-	
-    	@include('members.common.member_paginate', ['users' => $users])
-    	
-    	@include('members.common.member_listing', ['users' => $users])
-    
-    	@include('members.common.member_paginate', ['users' => $users])
-	
-	@endif
+		@if (count($users))
+		
+	    	@include('members.common.member_paginate', ['users' => $users])
+	    	
+	    	@include('members.common.member_listing', ['users' => $users])
+	    
+	    	@include('members.common.member_paginate', ['users' => $users])
+		
+		@endif
+	</form> <!-- #form-get-select-delete -->
 </section>
 
 <section>

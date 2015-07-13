@@ -151,7 +151,7 @@ class MemberController extends Controller
 	    $arr_checked = ['admin', 'boss', 'employ'];
 	    foreach ($arr_checked as $checked)
 	    {
-	        if (Input::has($checked) && Input::get($checked) == '1')
+	        if (Input::has($checked) && Input::get($checked) == 1)
 	        {
 	            $users = User::getUsers()->role($checked)->get();
 	            foreach ($users as $user)
@@ -161,6 +161,19 @@ class MemberController extends Controller
 	                    $user_ids[] = $user->id;
 	                }
 	            }
+	        }
+	        if (Input::has('delete') && Input::get('delete') == 1)
+	        {
+	        	if (Input::has('check')) 
+	        	{
+	        		// $list_user = array();
+	        		foreach (Input::get('check') as $user_id) {
+	        			$user = User::where('id', '=', $user_id)->delete();
+	        			// $list_user[] = $user;
+	        		}
+	        	}
+	        	// set value for checkbox delete;
+	        	// Input::get('delete') = 0;
 	        }
 	    }
 	    
