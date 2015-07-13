@@ -9,7 +9,11 @@
 				<th>{{ trans('labels.birthday') }}</th>
 				<th>{{ trans('labels.updated_at') }}</th>
 				<th>{{ trans('labels.role') }}</th>
+				@if (MemberHelper::getCurrentUserRole() == 'admin' OR MemberHelper::getCurrentUserRole() == 'boss')
+				<th>{{ trans('labels.role') }}</th>
+				@endif
 			</tr>
+
 		</thead>
 		<tbody>
             @foreach ($users as $i => $user)
@@ -21,6 +25,9 @@
 				<td>{{{ $user->birthday }}}</td>
 				<td>{{{ $user->updated_at }}}</td>
 				<td>{{{ $user->getFirstRole()->name or '' }}}</td>
+				@if (MemberHelper::getCurrentUserRole() == 'admin' OR MemberHelper::getCurrentUserRole() == 'boss')
+				<td>,<input type="checkbox" name="users[]" ></td>
+				@endif
 			</tr>
             @endforeach
 		</tbody>
