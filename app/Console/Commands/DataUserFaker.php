@@ -76,10 +76,35 @@ class DataUserFaker extends Command {
 	                $user->boss_id      = $boss_id;
 	                $user->updated_at   = $faker->dateTime($max = 'now');
 	            	$user->created_at   = $faker->dateTime($max = $user->updated_at);
-	                $user->save();
+	            	$user->save();
 
-	                $this->info('Inserted ' . $i . ' records for user to database with boss_id:' . $boss_id);
-            	}
+		            $this->info('Inserted ' . $i . ' records for user to database with boss_id:' . $boss_id);
+
+	                //check boss_id and set role for user
+	                if ($user->boss_id) 
+	                {
+	                	$user->assignRole('employ');
+	                	$this->info('Add role for user to Employment');
+	                } else{
+		                // $boss = $user->where('id', '=', $user->boss_id)->first();
+		                // // dd($boss);
+		                // if (!isset($boss)) 
+		                // {
+		                // 	$this->error('This boss has die!');
+		                // 	$user->assignRole('employ');
+		                // 	$this->info('Add role for this user to Employment');
+		                // } else {
+		                // $slug_boss = $boss->getFirstRole();
+		                // 	if ($slug_boss->slug == 'employ') 
+		                // 	{
+		                // 		$user->assignRole('employ');
+	                	// 		$this->info('Add role for user to Employment');
+		                // 		$boss->assignRole('boss');
+		                // 		$this->info('Add role for user to Boss with boss_id:' . $boss_id);
+		                // 	}
+		                // }
+		            }
+          		}
 
 				// Draw table into console.
 	            $headers = ['id', 'name', 'email', 'password', 'boss_id'];

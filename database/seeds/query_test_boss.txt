@@ -1,0 +1,8 @@
+INSERT INTO `users` (`id`, `name`, `email`, `meta_pass`, `password`, `kana`, `telephone_no`, `birthday`, `note`, `boss_id`, `disabled`, `remember_token`, `created_at`, `updated_at`)
+VALUES
+	(2, 'dat le tien', 'ltdat287@gmail.com', '', '$2y$10$4zZsuHXnfle/9hn31cLqmednFo6tOZgMj81hQ2ifHmHb8./JM.Rzi', 'le tien', '209-160-2106', '1989-07-28', 'user test boss privileges', 0, 0, NULL, '2015-07-14 06:22:42', '2015-07-14 06:22:42');
+
+// query set role for user boss
+INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`)
+VALUES
+	(2, 2, 2, '2015-07-14 14:06:09', '2015-07-14 14:06:09');

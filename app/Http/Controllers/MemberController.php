@@ -51,7 +51,7 @@ class MemberController extends Controller
             $users->where('boss_id', '=', Auth::user()->id);
         }
         
-        //????
+        //max record display on page
         $users = $users->paginate(VP_LIMIT_PAGINATE);
         
         // Set data for view
@@ -218,7 +218,7 @@ class MemberController extends Controller
 	    // Paginate users.
 	    if (count($users))
 	    {
-	        $users = $users->paginate(VP_LIMIT_PAGINATE);
+	        $users = $users->paginate(VP_LIMIT_PAGINATE)->setPath('search');
 	    }
 	    
 	    // Get role.
