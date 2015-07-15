@@ -33,43 +33,61 @@
 		// 	
 		
 		// Get checked ids from cookie
-		var arrayCheck = $.cookie('cookieCheck');
+		// var arrayCheck = $.cookie('cookieCheck');
 
 		// Set checked for checkboxes exists ids in cookie.
-		if (typeof(arrayCheck) == 'undefined') {
-			var arrayCheck = [];
-		}
-		$(".check").each(function () {
-			var checkedVal = $(this).val();
-			if (arrayCheck.indexOf(checkedVal) >= 0) {
-				$(this).attr('checked', 'checked');
-			}
-		});
+		// if (typeof(arrayCheck) == 'undefined') {
+		// 	var arrayCheck = [];
+		// }
+		// $(".check").each(function () {
+		// 	var checkedVal = $(this).val();
+		// 	if (arrayCheck.indexOf(checkedVal) >= 0) {
+		// 		$(this).attr('checked', 'checked');
+		// 	}
+		// });
 
 		// Bind event for checked change checboxes.
-		$(".check").click(function(){
-			console.log(arrayCheck);
-			$('.check').each(function() {
-				if ($(this).is(':checked')) {
-					arrayCheck.push($(this).val());
-				}
-			});
-			$.cookie('cookieCheck',arrayCheck);
-			
-			//var arrayCheck = [];
-			//$('.check:checked').each(function() {
-				//var currentVal = $(this).val();
-				//if (arrayCheck.indexOf(currentVal) < 0) {
-					//arrayCheck.push(currentVal);
-				//}
+		// $(".check").click(function(){
+		// 	// console.log(arrayCheck);
+		// 	$('.check').each(function() {
+		// 		if ($(this).is(':checked')) {
+		// 			arrayCheck.push($(this).val());
+		// 		}
+		// 	});
+		// 	$.cookie('cookieCheck',arrayCheck);
+			//
+			if (typeof($.cookie('cookieCheck')) == 'undefined') {
+				var arrayCheck = [];
+			} else {
+				var arrayCheck = $.cookie('cookieCheck');
 				
-			//});
-			// $.cookie('valueCheck',arrayCheck);
+				$('.check').each(function() {
+					var checkedVal = $(this).val();
+					if (arrayCheck.indexOf(checkedVal) >= 0) {
+						$(this).attr('checked','checked');
+					}
+				});
+			}
+
+			//set value for array when click
+			$('.check').click(function() {
+				$.cookie('cookieCheck','undefined');
+				$('.check').each(function() {
+					// console.log(arrayCheck);
+					if ($(this).is(':checked')) {
+						if (arrayCheck.indexOf($(this).val()) < 0) {
+							arrayCheck.push($(this).val());
+						}
+					}
+				});
+				$.cookie('cookieCheck',arrayCheck);
+			});
+			
 		});
 		// $('a').click(function() {
 			
 		// });
-	});
+	// });
 </script>
 </footer>
 
