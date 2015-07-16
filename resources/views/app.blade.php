@@ -59,7 +59,7 @@
 			if (typeof($.cookie('cookieCheck')) == 'undefined') {
 				var arrayCheck = [];
 			} else {
-				var arrayCheck = $.cookie('cookieCheck');
+				var arrayCheck = JSON.parse($.cookie('cookieCheck'));
 				
 				$('.check').each(function() {
 					var checkedVal = $(this).val();
@@ -68,19 +68,29 @@
 					}
 				});
 			}
+			
 
 			//set value for array when click
 			$('.check').click(function() {
-				$.cookie('cookieCheck','undefined');
+				// console.log(arrayCheck);
 				$('.check').each(function() {
-					// console.log(arrayCheck);
+					// 
 					if ($(this).is(':checked')) {
 						if (arrayCheck.indexOf($(this).val()) < 0) {
 							arrayCheck.push($(this).val());
 						}
+					} else{
+						if (arrayCheck.indexOf($(this).val()) > -1) {
+							arrayCheck.splice($(this).val());
+						}
 					}
+					
 				});
-				$.cookie('cookieCheck',arrayCheck);
+				// console.log(arrayCheck);
+				$.removeCookie('cookieCheck');
+				var JsonArray = JSON.stringify(arrayCheck);
+				$.cookie('cookieCheck',JsonArray);
+				// arrayCheck = [];
 			});
 			
 		});
