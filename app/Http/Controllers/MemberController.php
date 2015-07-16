@@ -142,6 +142,7 @@ class MemberController extends Controller
 	 */
 	public function search(MemberSearchFormRequest $request)
 	{	
+
 	    $users = null;
 	    $arr_cons = $arr_vals = null;
 	    $arr_define = array('name', 'email', 'kana', 'telephone_no');
@@ -162,21 +163,18 @@ class MemberController extends Controller
 	                }
 	            }
 	        }
-	        if (Input::has('delete') && Input::get('delete') == 1)
-	        {
-	        	if (Input::has('check')) 
-	        	{
-	        		// $list_user = array();
-	        		foreach (Input::get('check') as $user_id) {
-	        			$user = User::where('id', '=', $user_id)->delete();
-	        			// $list_user[] = $user;
-	        		}
-	        	}
-	        	// set value for checkbox delete;
-	        	// Input::get('delete') = 0;
-	        }
+	        
 	    }
 	    
+	    //Check has value delete and decode JSON to ARRAY; 
+    	if (Input::has('putValdel')) 
+    	{
+    		$Json2Array = json_decode(Input::get('putValdel'));
+    		foreach ($Json2Array as $user_id) {
+    			$user = User::where('id', '=', $user_id)->delete();
+    		}
+    	}
+
 	    /*
 	     * Build conditions.
 	     */

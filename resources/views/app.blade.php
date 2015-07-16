@@ -26,78 +26,46 @@
 
 <script>
 	$(document).ready(function(){
-		
-		// if ($.cookie('valueCheck')) {
-		// 		arrayCheck.concat($.cookie('valueCheck'));
-		// 	}
-		// 	
-		
-		// Get checked ids from cookie
-		// var arrayCheck = $.cookie('cookieCheck');
-
-		// Set checked for checkboxes exists ids in cookie.
-		// if (typeof(arrayCheck) == 'undefined') {
-		// 	var arrayCheck = [];
-		// }
-		// $(".check").each(function () {
-		// 	var checkedVal = $(this).val();
-		// 	if (arrayCheck.indexOf(checkedVal) >= 0) {
-		// 		$(this).attr('checked', 'checked');
-		// 	}
-		// });
-
-		// Bind event for checked change checboxes.
-		// $(".check").click(function(){
-		// 	// console.log(arrayCheck);
-		// 	$('.check').each(function() {
-		// 		if ($(this).is(':checked')) {
-		// 			arrayCheck.push($(this).val());
-		// 		}
-		// 	});
-		// 	$.cookie('cookieCheck',arrayCheck);
-			//
-			if (typeof($.cookie('cookieCheck')) == 'undefined') {
-				var arrayCheck = [];
-			} else {
-				var arrayCheck = JSON.parse($.cookie('cookieCheck'));
-				
-				$('.check').each(function() {
-					var checkedVal = $(this).val();
-					if (arrayCheck.indexOf(checkedVal) >= 0) {
-						$(this).attr('checked','checked');
-					}
-				});
-			}
+		if (typeof($.cookie('cookieCheck')) == 'undefined') {
+			var arrayCheck = [];
+		} else {
+			var arrayCheck = JSON.parse($.cookie('cookieCheck'));
 			
-
-			//set value for array when click
-			$('.check').click(function() {
-				// console.log(arrayCheck);
-				$('.check').each(function() {
-					// 
-					if ($(this).is(':checked')) {
-						if (arrayCheck.indexOf($(this).val()) < 0) {
-							arrayCheck.push($(this).val());
-						}
-					} else{
-						if (arrayCheck.indexOf($(this).val()) > -1) {
-							arrayCheck.splice($(this).val());
-						}
-					}
-					
-				});
-				// console.log(arrayCheck);
-				$.removeCookie('cookieCheck');
-				var JsonArray = JSON.stringify(arrayCheck);
-				$.cookie('cookieCheck',JsonArray);
-				// arrayCheck = [];
+			$('.check').each(function() {
+				var checkedVal = $(this).val();
+				if (arrayCheck.indexOf(checkedVal) >= 0) {
+					$(this).attr('checked','checked');
+				}
 			});
-			
+		}
+
+		//set value for array when click
+		$('.check').click(function() {
+			$('.check').each(function() {
+				// 
+				if ($(this).is(':checked')) {
+					if (arrayCheck.indexOf($(this).val()) < 0) {
+						arrayCheck.push($(this).val());
+					}
+				} else {
+					if (arrayCheck.indexOf($(this).val()) >= 0) {
+						arrayCheck.splice(arrayCheck.indexOf($(this).val()), 1);
+					}
+				}
+			});
+			$.removeCookie('cookieCheck');
+			var JsonArray = JSON.stringify(arrayCheck);
+			$.cookie('cookieCheck',JsonArray);
 		});
-		// $('a').click(function() {
-			
-		// });
-	// });
+
+		//send value from cookie to input hindden and send request to server
+		$('#deletecheck').click(function() {
+			//var Json2Array = JSON.parse($.cookie('cookieCheck'));
+			$('.putValdel').val($.cookie('cookieCheck'));
+			$.removeCookie('cookieCheck');
+		});
+	});
+
 </script>
 </footer>
 

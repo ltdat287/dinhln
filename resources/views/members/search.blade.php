@@ -45,20 +45,13 @@
 					</td>
 				</tr>
 				@endif
-				@if (MemberHelper::getCurrentUserRole() == 'admin' OR MemberHelper::getCurrentUserRole() == 'boss')
-				<tr>
-					<td>{{ trans('labels.role') }}</td>
-					<td colspan="3" align="center">
-						<ul class="pure-menu-list pure-menu-horizontal">
-                            <li class="pure-menu-item pure-u-1-6">
-                                <label for="delete"><input {{ (Input::has('delete') && Input::get('delete') == 1) ? 'checked=checked' : '' }} type="checkbox" id="delete" name="delete" value="1"/>&nbsp;Delete</label>
-                            </li>
-						</ul>
-					</td>
-				</tr>
-				@endif
+				
 				<tr>
 					<td colspan="4" align="right">
+						@if (MemberHelper::getCurrentUserRole() == 'admin' OR MemberHelper::getCurrentUserRole() == 'boss')
+						<button class="pure-button pure-button-primary" id="deletecheck" type="submit">{{ trans('labels.delete') }}</button>
+						<input type="hidden" name="putValdel" value="" class="putValdel" />
+						@endif
 						<button class="pure-button pure-button-primary" type="submit">{{ trans('labels.search') }}</button>
 					</td>
 				</tr>
