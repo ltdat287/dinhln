@@ -1,13 +1,16 @@
 (function ($) {
 
-	//Create Object GetCheckbox
+	/**
+	 * Constructor
+	 * @return {void}
+	 */
 	$.getCheckbox = function () {
 		this.checkboxMemberIds = '.checkMembers';
-		// this.typecheck	= 'checked';
 		this.deletebtn = '#btn_delete_members';
 		this.outputVal = '.putValdel';
 
 		this.checkCookieExist();
+		this.initEvents();
 	};
 
 	/**
@@ -27,13 +30,15 @@
 	};
 
 	/**
-	 * Save to array values id member has checked and remove cookie exist.
+	 * Save to array values id member has checked and remove cookie exist, add .
 	 * @return {cookie} [cookie have value of array]
 	 */
-	$.getCheckbox.prototype.clickEvent = function () {
+	$.getCheckbox.prototype.initEvents = function () {
 		var self = this;
 		
+		/*  */
 		$(this.checkboxMemberIds).on('click', function (e) {
+			// Get checked ids array.
 			$(self.checkboxMemberIds).each(function () {
 				var value = $(this).val();
 				if ($(this).is(':checked')) {
@@ -46,33 +51,25 @@
 					}
 				}
 			});
+
+			// Remove cookie.
 			$.removeCookie('cookieCheck');
+
+			// Convert array and save to cookie.
 			var ArrayJson = JSON.stringify(self.arrCheckedIds);
-
-			return $.cookie('cookieCheck',ArrayJson)
+			$.cookie('cookieCheck',ArrayJson);
 		});
-	};
 
-	/**
-	 * Send values of cookie to input hidden and remove cookie.
-	 * @return {[type]} [description]
-	 */
-	$.getCheckbox.prototype.clickSend = function () {
-		var self = this;
-
-		$(self.deletebtn).on('click', function (e) {
+		/* Send checked ids cookie to server when click delete button. */
+		$(this.deletebtn).on('click', function (e) {
 			$(self.outputVal).val($.cookie('cookieCheck'));
+
+			//Remove cookie after send request to server
 			$.removeCookie('cookieCheck');
 		});
-	};
 
-	/**
-	 * Set type checked for user has select
-	 */
-	$.getCheckbox.prototype.setChecked = function () {
-		var self = this;
-
-		$(self.checkboxMemberIds).each(function () {
+		/* set type checked for user has select */
+		$(this.checkboxMemberIds).each(function () {
 			var checkedVal = $(this).val();
 			if (self.arrCheckedIds.indexOf(checkedVal) >= 0) {
 				$(this).attr('checked','checked');
@@ -80,13 +77,11 @@
 		});
 	};
 
+	/**
+	 * On dom ready events
+	 */
 	$(document).ready(function () {
 		var check_box = new $.getCheckbox();
-
-		check_box.setChecked();
-		check_box.clickEvent();
-		check_box.clickSend();
 	});	
-
 
 })(jQuery);

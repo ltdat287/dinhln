@@ -24,7 +24,6 @@
 <footer>
 {{ trans('labels.footer_label') }}
 <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
-
 </footer>
 
 </body>
