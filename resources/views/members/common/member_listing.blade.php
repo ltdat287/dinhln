@@ -26,7 +26,7 @@
 				<td>{{{ $user->updated_at }}}</td>
 				<td>{{{ $user->getFirstRole()->name or '' }}}</td>
 				@if (MemberHelper::getCurrentUserRole() == 'admin' OR MemberHelper::getCurrentUserRole() == 'boss')
-				<td><div class="checkbox"><label><input type="checkbox" name="check[]" class="check" id="check" value="{{ $user->id }}"/>&nbsp;Select</label></div></td>
+				<td><div class="checkbox"><label><input type="checkbox" name="check[]" class="checkMembers" value="{{ $user->id }}"/>&nbsp;Select</label></div></td>
 				@endif
 			</tr>
             @endforeach

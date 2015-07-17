@@ -49,7 +49,7 @@
 				<tr>
 					<td colspan="4" align="right">
 						@if (MemberHelper::getCurrentUserRole() == 'admin' OR MemberHelper::getCurrentUserRole() == 'boss')
-						<button class="pure-button pure-button-primary" id="deletecheck" type="submit">{{ trans('labels.delete') }}</button>
+						<button class="pure-button pure-button-warning" id="btn_delete_members" type="submit">{{ trans('labels.delete') }}</button>
 						<input type="hidden" name="putValdel" value="" class="putValdel" />
 						@endif
 						<button class="pure-button pure-button-primary" type="submit">{{ trans('labels.search') }}</button>
