@@ -10,6 +10,10 @@
 		this.checkCookieExist();
 	};
 
+	/**
+	 * Check cookie of values checked at constructor
+	 * @return array
+	 */
 	$.getCheckbox.prototype.checkCookieExist = function () {
 		var self = this;
 
@@ -22,6 +26,10 @@
 		}
 	};
 
+	/**
+	 * Save to array values id member has checked and remove cookie exist.
+	 * @return {cookie} [cookie have value of array]
+	 */
 	$.getCheckbox.prototype.clickEvent = function () {
 		var self = this;
 		
@@ -45,6 +53,10 @@
 		});
 	};
 
+	/**
+	 * Send values of cookie to input hidden and remove cookie.
+	 * @return {[type]} [description]
+	 */
 	$.getCheckbox.prototype.clickSend = function () {
 		var self = this;
 
@@ -54,6 +66,9 @@
 		});
 	};
 
+	/**
+	 * Set type checked for user has select
+	 */
 	$.getCheckbox.prototype.setChecked = function () {
 		var self = this;
 
