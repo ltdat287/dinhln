@@ -171,13 +171,13 @@ class MemberController extends Controller
     	{
     		$Json2Array = json_decode(Input::get('putValdel'));
     		foreach ($Json2Array as $user_id) {
+    			$role = User::where('id', '=', $user_id)->getFirstRole();
+    			dd($role);
     			$user = User::where('id', '=', $user_id)->delete();
     		}
     	}
 
-	    /*
-	     * Build conditions.
-	     */
+	    /*  */
 	    foreach ($arr_define as $define)
 	    {
 	        if (Input::has($define))
