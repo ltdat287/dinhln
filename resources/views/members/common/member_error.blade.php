@@ -2,7 +2,7 @@
 <?php 
 $errors = (is_array($errors)) ? $errors : $errors->all();
 ?>
-<sction class="error-box">
+<section class="error-box">
 	<h3>!!ERROR!!</h3>
 	<ul>
 	@foreach ($errors as $error)

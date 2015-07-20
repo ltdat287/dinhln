@@ -23,9 +23,9 @@
 
 <footer>
 {{ trans('labels.footer_label') }}
-<script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
 </footer>
-
+<script type="text/javascript" src="{{ asset('/js/getcheckbox.js') }}"></script>
+@yield('body.js')
 </body>
 </html>
 
