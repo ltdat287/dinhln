@@ -1,0 +1,129 @@
+[33mcommit cd4cc5301274a5822dd23173527b6c5b3e4c7868[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Thu Jul 16 15:46:52 2015 +0700
+
+    finished use jquery send value user of delete to server
+
+[33mcommit bc73367d76fba64bbe390ccb0afdd13680e42085[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Thu Jul 16 13:07:40 2015 +0700
+
+    fix jquery but not delete checkbox uncheck
+
+[33mcommit 3e1a0745e1a6168c01b81d72aacf9ee97155ad9a[m
+Author: ltdat287 <ltdat5789@gmail.com>
+Date:   Wed Jul 15 23:17:46 2015 +0700
+
+    research jquery cookie save cookie to array
+
+[33mcommit bdf6b8a6d6501582c2fff57280be9bc5f1346078[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Wed Jul 15 17:56:14 2015 +0700
+
+    test code javascript
+
+[33mcommit d99e7c65008a2cd04f30c7668d9dfa97cdf73147[m
+Author: ltdat287 <ltdat5789@gmail.com>
+Date:   Wed Jul 15 00:14:58 2015 +0700
+
+    add src js for project and test javascript
+
+[33mcommit 40f54274ab4825f229a194c9ece81d3a0ae20e1b[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Tue Jul 14 17:45:06 2015 +0700
+
+    add jquery for project
+
+[33mcommit 4096b6280163bdc37e8ad4b95a370c3ce0615122[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Tue Jul 14 15:41:30 2015 +0700
+
+    fixed search page paginate and still error faker:user
+
+[33mcommit 90cbdc5ba2e52cc624dc27d96f87723245d22500[m
+Author: ltdat287 <ltdat5789@gmail.com>
+Date:   Tue Jul 14 00:27:22 2015 +0700
+
+    add select delete option and deleted user selected
+
+[33mcommit 3f6ae41b484f769da0792b1eee501c6f38823f33[m
+Author: ltdat287 <ltdat5789@gmail.com>
+Date:   Mon Jul 13 23:47:23 2015 +0700
+
+    fixed add column use migrate
+
+[33mcommit 5fa5db0b0a20cbb4fe3b50529fc750e6c9c30d82[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Mon Jul 13 18:41:56 2015 +0700
+
+    Commit for add test search htlml option
+
+[33mcommit 81700fb39dc27f70684dd03f9af23b3f4b0fcc4e[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Mon Jul 13 18:14:36 2015 +0700
+
+    Commit for add test search option
+
+[33mcommit 7b51d73eefbe61f0ab313f716f12393420ef8f89[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Mon Jul 13 15:53:30 2015 +0700
+
+    fixed password for project only number with 8 number
+
+[33mcommit e2be181f27f31a0de7536d409c93a4beeeb9905c[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Mon Jul 13 15:19:31 2015 +0700
+
+    add column meta_pass and fix start:app, faker:user console
+
+[33mcommit e579a82f48e00a3fb160e0ab3c5232cc82dfd602[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Mon Jul 13 14:27:55 2015 +0700
+
+    add DataUserFaker to create data for user
+
+[33mcommit c63cb8605dc597ace0ad4df983e2dfda1729cb15[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Mon Jul 13 13:42:54 2015 +0700
+
+    edit composer.lock
+
+[33mcommit b8fa29372680a1271e9a000a87b0f9451eff35f5[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Mon Jul 13 13:41:28 2015 +0700
+
+    add git to restore
+    
+    add git to restore
+
+[33mcommit 3a26afe4545be249fe53e3cda8c6e48d2ed00117[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Mon Jul 13 13:30:17 2015 +0700
+
+    add DataUserFaker
+    
+    add DataUserFaker
+
+[33mcommit 446e9ff29cf2a5f28266b1e985c6629ccc3c44ce[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Fri Jul 10 17:27:15 2015 +0700
+
+    third 2 commit
+
+[33mcommit f2b390a8ff8b39fe7d5acc750529828085685974[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Fri Jul 10 17:01:42 2015 +0700
+
+    Commit ban moi nhat
+
+[33mcommit abcd54593329af55f344d01fbc5952c2c4c19eee[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Wed Jul 8 17:38:31 2015 +0700
+
+    Research project from Dinhln
+
+[33mcommit 47d87f9c8a623c40c4414f8acab090ddc8040e74[m
+Author: datlt <ltdat5789@gmail.com>
+Date:   Wed Jul 8 16:38:33 2015 +0700
+
+    research project dinhln

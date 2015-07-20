@@ -37,15 +37,15 @@ class MemberController extends Controller
     	// dd($data);
 
     	$validator = Validator::make($data, array(
-			'name' => 'required|min:1|max:16',
-		    'kana' => 'required|min:1|max:16',
-            'email' => 'required|vpemail|confirmed|max:255|unique:users',
-		    'email_confirmation' => 'required',
-		    //'telephone_no' => 'required|vptelephone|min:10|max:13',
-		    'birthday' => 'required|date_format:' . VP_TIME_FORMAT . '|vpdate|min:10|max:10',
-		    'note' => 'min:1|max:300',
-		    'password' => 'required|between:8,32',
-		    'use_role' => 'required'
+			'name' => 'required|min:10|max:16',
+		    // 'kana' => 'required|min:1|max:16',
+      //       'email' => 'required|vpemail|confirmed|max:255|unique:users',
+		    // 'email_confirmation' => 'required',
+		    // //'telephone_no' => 'required|vptelephone|min:10|max:13',
+		    // 'birthday' => 'required|date_format:' . VP_TIME_FORMAT . '|vpdate|min:10|max:10',
+		    // 'note' => 'min:1|max:300',
+		    // 'password' => 'required|between:8,32',
+		    // 'use_role' => 'required'
 		));
 
 		if ($validator->fails()) {
