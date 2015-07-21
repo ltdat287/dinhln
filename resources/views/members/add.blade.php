@@ -63,6 +63,8 @@
 			this.checkMemberAftertype(this.userphone);
 			// this.checkMemberAftertype(this.userbirthday);
 			this.checkMemberAftertype(this.userpass);
+
+			this.checkExistMember(this.username);
 		}
 
 		/**
@@ -111,7 +113,7 @@
 					dataForm[getNameInput] = valueInput;
 
 					$.ajax({
-						url: '{{ url('/add/test') }}',
+						url: '{{ url('/Ajax/memberexist') }}',
 						type: 'POST',
 						data: dataForm,
 					}).done(function (data) {

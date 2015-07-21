@@ -30,6 +30,10 @@ class MemberController extends Controller
         //$this->middleware('auth');
     }
     
+    /**
+     * Ajax check validator after input fields 
+     * @return [type] [Response data to browser]
+     */
     public function testcode()
     {
     	$data = Request::all();
@@ -53,6 +57,22 @@ class MemberController extends Controller
 		}
 
 		return Response::json($data);
+    }
+
+    public function ajaxmemberexist()
+    {
+    	if (Input::has('name')) {
+    		$checkName = Input::get('name');
+    		$user = User::where('name', '=', $checkName)->get();
+    		// dd($user);
+    		if ($user) {
+    			$message = 'The name has exist!';
+    			return Response::json($message);
+    		} else{
+    			$message = 'The name has available!';
+    			return Response::json($message);
+    		}
+    	}
     }
 
     /**

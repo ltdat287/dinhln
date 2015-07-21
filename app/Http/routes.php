@@ -16,6 +16,7 @@ Route::get('login',    array('as' => 'login', 'uses' => 'Auth\AuthController@get
 Route::post('login',    array('as' => 'login', 'uses' => 'Auth\AuthController@postLogin'));
 
 Route::post('add/test', array('as' => 'test', 'uses' => 'MemberController@testcode'));
+Route::post('Ajax/memberexist', array('as' => 'ajax.memberexist', 'uses' => 'MemberController@ajaxmemberexist'));
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'manager'], function () {
