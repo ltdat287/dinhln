@@ -5,7 +5,9 @@
     "**/.*",
     "node_modules",
     "vendor/bower_components",
-    "tests"
+    "tests",
+    "bower_components",
+    "test"
   ],
   "dependencies": {
     "jquery": "~2.1.4",
@@ -14,5 +16,10 @@
   },
   "install": {
     "path": "public/assets"
-  }
+  },
+  "version": "0.0.0",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT"
 }

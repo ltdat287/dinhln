@@ -61,16 +61,32 @@ class MemberController extends Controller
 
     public function ajaxmemberexist()
     {
+    	//Check exist email after input
+    	if (Input::has('email')) {
+    		$checkName = Input::get('email');
+    		// dd($checkName);
+    		$user = User::where('email', '=', $checkName)->first();
+    		// dd(isset($user));
+    		if ($user) {
+    			$message = 'The email has exist!';
+    			return Response::json(['email' => $message]);
+    		} else{
+    			$message = 'The email has available!';
+    			return Response::json(['email' => $message]);
+    		}
+    	}
+    	//Check exist username after input
     	if (Input::has('name')) {
     		$checkName = Input::get('name');
-    		$user = User::where('name', '=', $checkName)->get();
-    		// dd($user);
+    		// dd($checkName);
+    		$user = User::where('name', '=', $checkName)->first();
+    		// dd(isset($user));
     		if ($user) {
     			$message = 'The name has exist!';
-    			return Response::json($message);
+    			return Response::json(['name' => $message]);
     		} else{
     			$message = 'The name has available!';
-    			return Response::json($message);
+    			return Response::json(['name' => $message]);
     		}
     	}
     }

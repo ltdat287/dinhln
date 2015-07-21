@@ -6,7 +6,7 @@
 
 <section class="contents">
 	<h2>{{ trans('labels.member_add') }}</h2>
-<div id="testcode" class="alert alert-danger"></div>
+<div id="testcode"></div>
 	<section>
         @include('members.common.member_error', ['errors' => $errors])
         
@@ -65,6 +65,7 @@
 			this.checkMemberAftertype(this.userpass);
 
 			this.checkExistMember(this.username);
+			this.checkExistMember(this.useremail);
 		}
 
 		/**
@@ -95,7 +96,8 @@
 						$('#testcode').html('');
 						var JsondecodeData = $.parseJSON(JSON.stringify(data));
 						// console.log(JsondecodeData);
-						$('#testcode').append(JsondecodeData[getNameInput]);
+						var displayHtmlresult = '<div class="alert alert-danger">'+JsondecodeData[getNameInput]+'</div>';
+						$('#testcode').append(displayHtmlresult);
 					})
 					.fail(function () {
 						alert('Ajax faile fetch data');
@@ -117,9 +119,10 @@
 						type: 'POST',
 						data: dataForm,
 					}).done(function (data) {
-						$('#testcode').html('');
+						// $('#testcode').html('');
 						var JsondecodeData = $.parseJSON(JSON.stringify(data));
-						$('#testcode').append(JsondecodeData[getNameInput]);
+						var displayHtmlresult = '<div class="alert alert-danger">'+JsondecodeData[getNameInput]+'</div>';
+						$('#testcode').append(displayHtmlresult);
 					}).fail(function () {
 						alert('Ajax faile fetch data');
 					});
