@@ -6,7 +6,7 @@
 
 <section class="contents">
 	<h2>{{ trans('labels.member_add') }}</h2>
-<div id="testcode">aDasdASDa</div>
+<div id="testcode" class="alert alert-danger"></div>
 	<section>
         @include('members.common.member_error', ['errors' => $errors])
         
@@ -39,48 +39,14 @@
 			$.ajaxSetup({
 			   	headers: { 'X-CSRF-Token' : $('meta[name="_token"]').attr('content') }
 			});
-			// Check fields when .keyup() events
-			// var delay = (function(){
-			//   	var timer = 0;
-			//   		return function(callback, ms){
-			//     	clearTimeout (timer);
-			//     	timer = setTimeout(callback, ms);
-			//   	};
-			// })();
-			
-			// var name = $('input[name="name"]').val();
-			// var kana = $('input[name="kana"]').val();
-			// var email = $('input[name="email"]').val();
-			// var email_conf = $('input[name="email_confirmarion"]').val();
-			// var phone = $('input[name="telephone_no"]').val();
-			// var birthday = $('input[name="birthday"]').val();
-
-			
-			// $('#dlt_name').on('change', function () {
-
-			// 	var timeOut = setTimeout(function () {
-			// 		var name = $('#dlt_name').val();
-
-			// 	    $.ajax({
-				    	
-			// 			url: '{{ url('/add/test') }}',
-			// 			type: 'POST',
-			// 			data: name,
-			// 			success: function(data){
-			// 				var getdata = $.parseJSON(JSON.stringify(data));
-			// 				alert(getdata.name);
-			// 			},
-			// 			error: function (){
-			// 				console.log('data');
-			// 			}
-			// 		});	
-			// 	}, 2000);
-
-			// });
 			var AjaxMember = new $.useAjaxaddMember();
-			AjaxMember.checkMemberAftertype();
+			// AjaxMember.checkMemberAftertype($.useAjaxaddMember[username]);
 
 		});
+		/**
+		 * Add new object with properties constructor
+		 * @return {[type]} [description]
+		 */
 		$.useAjaxaddMember = function () {
 			this.username = '#dlt_name';
 			this.userkana = '#dlt_kana';
@@ -89,32 +55,75 @@
 			this.userphone = '#dlt_phone';
 			this.userbirthday = '#dlt_birth';
 			this.userpass = '#dlt_password';
+
+			this.checkMemberAftertype(this.username);
+			this.checkMemberAftertype(this.userkana);
+			this.checkMemberAftertype(this.useremail);
+			this.checkMemberAftertype(this.useremail_conf);
+			this.checkMemberAftertype(this.userphone);
+			// this.checkMemberAftertype(this.userbirthday);
+			this.checkMemberAftertype(this.userpass);
 		}
 
-		$.useAjaxaddMember.prototype.checkMemberAftertype = function () {
-			var self = this;
+		/**
+		 * Add function check fields when user input
+		 * @param  {[type]} dlt_parameter [custom dlt_parameter use insert fields input ]
+		 */
+		$.useAjaxaddMember.prototype.checkMemberAftertype = function (dlt_parameter) {
+			// var self = this;
 
-			$(this.username).on('change', function() {
+			$(dlt_parameter).on('change', function() {
 				var timeOut = setTimeout(function() {
 
-					var valueInput = $(self.username).val();
+					var valueInput = $(dlt_parameter).val();
+					var getNameInput = $(dlt_parameter).attr("name");
+					// Create Object for Ajax data
+					var dataForm = {};
+					dataForm[getNameInput] = valueInput;
+					// console.log(dataForm);
+					
+					//Create Ajax send request
 					$.ajax({
 						url: '{{ url('/add/test') }}',
 						type: 'POST',
-						data: valueInput,
+						data: dataForm,
 					})
 					.done(function (data) {
 						// console.log(data);
 						$('#testcode').html('');
 						var JsondecodeData = $.parseJSON(JSON.stringify(data));
-						$('#testcode').append(JsondecodeData.name);
+						// console.log(JsondecodeData);
+						$('#testcode').append(JsondecodeData[getNameInput]);
 					})
 					.fail(function () {
 						alert('Ajax faile fetch data');
 					});
-				}, 2000);
+				}, 500);
 			});
-		}
+		};
+
+		$.useAjaxaddMember.prototype.checkExistMember = function (dlt_parameter) {
+			$(dlt_parameter).on('change', function() {
+				var timeOut = setTimeout(function() {
+					var valueInput = $(dlt_parameter).val();
+					var getNameInput = $(dlt_parameter).attr("name");
+					var dataForm = {};
+					dataForm[getNameInput] = valueInput;
+
+					$.ajax({
+						url: '{{ url('/add/test') }}',
+						type: 'POST',
+						data: dataForm,
+					}).done(function (data) {
+						$('#testcode').html('');
+						var JsondecodeData = $.parseJSON(JSON.stringify(data));
+						$('#testcode').append(JsondecodeData[getNameInput]);
+					}).fail(function () {
+						alert('Ajax faile fetch data');
+					});
+				}, 1000);
+			});
+		};
 	}) (jQuery);
 </script>
 @endsection
