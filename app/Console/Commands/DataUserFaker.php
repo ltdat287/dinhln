@@ -56,9 +56,8 @@ class DataUserFaker extends Command {
         if ($valids->fails()) {
         	foreach($valids->messages()->all() as $msg){
         		$this->error($msg);
+        		return $this->error('You need set values.');
         	}
-
-        	return $this->error('You need set values.');
         } else {
         	if ($this->confirm('Do you want add user used Faker? [y/n]')) {
         		// Insert data faker for users.
@@ -83,27 +82,33 @@ class DataUserFaker extends Command {
 	                //check boss_id and set role for user
 	                if ($user->boss_id) 
 	                {
-	                	$user->assignRole('employ');
-	                	$this->info('Add role for user to Employment');
-	                } else{
-		                // $boss = $user->where('id', '=', $user->boss_id)->first();
-		                // // dd($boss);
-		                // if (!isset($boss)) 
-		                // {
-		                // 	$this->error('This boss has die!');
-		                // 	$user->assignRole('employ');
-		                // 	$this->info('Add role for this user to Employment');
-		                // } else {
-		                // $slug_boss = $boss->getFirstRole();
-		                // 	if ($slug_boss->slug == 'employ') 
-		                // 	{
-		                // 		$user->assignRole('employ');
-	                	// 		$this->info('Add role for user to Employment');
-		                // 		$boss->assignRole('boss');
-		                // 		$this->info('Add role for user to Boss with boss_id:' . $boss_id);
-		                // 	}
-		                // }
-		            }
+	                	// $user->assignRole('employ');
+	                	// $this->info('Add role for user to Employment');
+
+	                	$boss = $user->where('id', '=', $user->boss_id)->first();
+		                // dd($boss);
+		                if (!isset($boss)) 
+		                {
+		                	$user->assignRole('employ');
+		                	$this->info('Add role for this user to Employment');
+		                	$this->error('This boss has die!');
+		                } else {
+		                $slug_boss = $boss->getFirstRole();
+		                // dd($slug_boss);
+		                	if ($slug_boss->slug == 'employ' or $slug_boss->slug == null) 
+		                	{
+		                		$user->assignRole('employ');
+	                			$this->info('Add role for user to Employment');
+		                		$boss->assignRole('boss');
+		                		$this->info('Add role for user to Boss with boss_id:' . $boss_id);
+		                	}
+		                	if ($slug_boss->slug == 'boss')
+		                	{
+		                		$user->assignRole('employ');
+	                			$this->info('Add role for user to Employment');
+		                	}
+		                }
+	                } 
           		}
 
 				// Draw table into console.
