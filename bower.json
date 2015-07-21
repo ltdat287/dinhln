@@ -1,0 +1,17 @@
+{
+  "name": "dinhln",
+  "description": "Project create by dinhln and editor by DatLT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5"
+  },
+  "install": {
+    "path": "libs"
+  }
+}
