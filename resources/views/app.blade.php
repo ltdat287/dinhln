@@ -6,8 +6,11 @@
 	<link href="{{ ( Route::getCurrentRoute()->getName() == 'login' ) ? url('/login') : url('/') }}" rel="canonical">
 	<link rel="stylesheet" href="{{ asset('/css/pure-min.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
-	<script type="text/javascript" src="{{ asset('/js/jquery.js') }}" ></script>
-	<script type="text/javascript" src="{{ asset('/js/jquery.cookie.js') }}" ></script>
+	<script type="text/javascript" src="{{ asset('/assets/jquery/jquery.js') }}" ></script>
+	<script type="text/javascript" src="{{ asset('/assets/jquery.cookie/jquery.cookie.js') }}" ></script>
+
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 </head>
 <body>
