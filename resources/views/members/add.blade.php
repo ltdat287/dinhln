@@ -35,14 +35,32 @@
 <script type="text/javascript">
 	(function ($) {
 		$(document).ready(function() {
-
 			$.ajaxSetup({
 			   	headers: { 'X-CSRF-Token' : $('meta[name="_token"]').attr('content') }
 			});
+
+			// function showValues(dlt_parameter) {
+				var valName = $("form[name='addMember']").serializeArray();
+				// var Jsonencode = JSON.stringify(valName);
+				// $.useAjaxaddmember.username = 
+				var data = {};
+				$(valName).each(function(index,obj) {
+					data[obj.name] = obj.value;
+				});
+				// console.log(data);
+			// }
+
 			var AjaxMember = new $.useAjaxaddMember();
-			// AjaxMember.checkMemberAftertype($.useAjaxaddMember[username]);
+			// AjaxMember.username = data.name;
+			// AjaxMember.userkana = data.kana;
+			// AjaxMember.useremail = data.email;
+			// AjaxMember.useremail_conf = data.email_confirmation;
+			// AjaxMember.userphone = data.telephone_no
+			// AjaxMember.userbirthday = data.birthday;
+			// AjaxMember.userpass = data.password;
 
 		});
+
 		/**
 		 * Add new object with properties constructor
 		 * @return {[type]} [description]
@@ -83,7 +101,6 @@
 					// Create Object for Ajax data
 					var dataForm = {};
 					dataForm[getNameInput] = valueInput;
-					// console.log(dataForm);
 					
 					//Create Ajax send request
 					$.ajax({
@@ -92,10 +109,8 @@
 						data: dataForm,
 					})
 					.done(function (data) {
-						// console.log(data);
 						$('#testcode').html('');
 						var JsondecodeData = $.parseJSON(JSON.stringify(data));
-						// console.log(JsondecodeData);
 						var displayHtmlresult = '<div class="alert alert-danger">'+JsondecodeData[getNameInput]+'</div>';
 						$('#testcode').append(displayHtmlresult);
 					})
@@ -119,7 +134,6 @@
 						type: 'POST',
 						data: dataForm,
 					}).done(function (data) {
-						// $('#testcode').html('');
 						var JsondecodeData = $.parseJSON(JSON.stringify(data));
 						var displayHtmlresult = '<div class="alert alert-danger">'+JsondecodeData[getNameInput]+'</div>';
 						$('#testcode').append(displayHtmlresult);
