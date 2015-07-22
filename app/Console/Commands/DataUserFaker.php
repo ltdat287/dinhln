@@ -82,9 +82,6 @@ class DataUserFaker extends Command {
 	                //check boss_id and set role for user
 	                if ($user->boss_id) 
 	                {
-	                	// $user->assignRole('employ');
-	                	// $this->info('Add role for user to Employment');
-
 	                	$boss = $user->where('id', '=', $user->boss_id)->first();
 		                // dd($boss);
 		                if (!isset($boss)) 
@@ -108,7 +105,10 @@ class DataUserFaker extends Command {
 	                			$this->info('Add role for user to Employment');
 		                	}
 		                }
-	                } 
+	                } else{
+	                    $user->assignRole('employ');
+                	    $this->info('Add role for user to Employment with boss_id:' . $boss_id); 
+	                }
           		}
 
 				// Draw table into console.
